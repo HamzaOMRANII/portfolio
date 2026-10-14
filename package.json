@@ -1,22 +1,22 @@
 {
-  "name": "portfolio",
+  "name": "hamza-omrani-portfolio",
   "version": "1.0.0",
-  "main": "index.ts",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node src/server.js",
+    "pm2:dev": "pm2 start ecosystem.config.js",
+    "pm2:start": "pm2 start ecosystem.prod.config.js && pm2 save",
+    "pm2:reload": "pm2 reload ecosystem.prod.config.js --update-env"
+  },
   "dependencies": {
-    "expo": "~57.0.29",
-    "expo-status-bar": "~57.0.1",
-    "react": "19.2.3",
-    "react-native": "0.86.3"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
-  },
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
-  },
-  "private": true
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4"
+  }
 }
