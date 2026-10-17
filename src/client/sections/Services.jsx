@@ -44,7 +44,7 @@ export function Services() {
   const [open, setOpen] = useState(0);
   return (
     <section className="services" id="services">
-      <SectionHead eyebrow="Where I help" title="I build the solution. Then I secure it." />
+      <SectionHead eyebrow="Where I help" title="I build it secure from day one." />
       <div className="service-rows">
         {services.map((s, i) => (
           <Row key={s.n} s={s} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />

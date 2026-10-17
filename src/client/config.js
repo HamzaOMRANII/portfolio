@@ -4,5 +4,5 @@ export const site = {
   email: 'hamza.omrani.it@gmail.com',
   secondaryEmail: 'hamza.omrani@icloud.com',
   linkedin: 'https://www.linkedin.com/in/hamza-omrani-likedin-account/',
-  llcName: '[your LLC name]',
+  llcName: '', // e.g. 'Omrani Solutions LLC' — the footer line stays hidden while this is empty
 };

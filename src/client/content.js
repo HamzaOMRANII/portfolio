@@ -29,17 +29,13 @@ export const glyphs = [
   { t: 'git commit', top: '90%', left: '70%' },
 ];
 
-export const terminalLines = [
-  { p: '$', hl: 'build', rest: ' --target=production' },
-  { p: '>', hl: '', rest: 'compiling services' },
-  { p: '>', hl: '', rest: 'encrypting payload' },
-  { p: '>', hl: '', rest: 'tls handshake ', ok: 'ok' },
-  { p: '>', hl: '', rest: 'status: ', ok: 'secured ✓' },
-];
+export const brainCaption = {
+  title: 'Human minds. Real solutions.',
+};
 
 export const stats = [
   { v: '7+', l: 'Years engineering' },
-  { v: '4×', l: 'Kaspersky certified' },
+  { v: '3×', l: 'Kaspersky certified' },
   { v: '3', l: 'Disciplines, one build' },
 ];
 
@@ -170,7 +166,6 @@ export const scope = [
 export const credentials = [
   { by: 'IBM', t: 'Software Engineer Professional Certificate' },
   { by: 'Kaspersky', t: 'Security Center for Managed Service Providers' },
-  { by: 'Kaspersky', t: 'Security Center for MSP' },
   { by: 'Kaspersky', t: 'MSP Onboarding Program' },
   { by: 'Kaspersky', t: 'Partner Onboarding Program' },
   { by: 'ENIS', t: 'B.Eng in Electronics, 2015–2018' },

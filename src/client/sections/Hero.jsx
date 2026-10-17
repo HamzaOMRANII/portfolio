@@ -1,45 +1,18 @@
-import { stats } from '../content.js';
-import { Terminal } from '../components/Terminal.jsx';
-import { Barcode } from '../components/Barcode.jsx';
-import portrait from '../assets/hamza-portrait.webp';
+import { stats, brainCaption } from '../content.js';
+import brain from '../assets/brain.gif';
 
-function Collage() {
+function Showroom() {
   return (
-    <div className="collage">
-      <div className="code-panel" aria-hidden="true">
-        <div className="code-panel-head">
-          <span />
-          <span />
-          <span />
-        </div>
-        <Terminal />
-      </div>
-
+    <figure className="showroom">
       <span className="float-chip float-chip--dev">&lt;/&gt; DEV</span>
       <span className="float-chip float-chip--sec">◆ SEC</span>
-
-      <div className="badge-card">
-        <div className="badge-scan-frame">
-          <span className="bracket bracket-tl" />
-          <span className="bracket bracket-tr" />
-          <span className="bracket bracket-bl" />
-          <span className="bracket bracket-br" />
-          <div className="scanline" />
-          <img src={portrait} alt="Portrait of Hamza Omrani" className="badge-photo" width="1100" height="1589" />
-        </div>
-        <div className="badge-info">
-          <div className="badge-row">
-            <span className="badge-name">OMRANI, HAMZA</span>
-            <span className="badge-status">
-              <span className="status-dot" />
-              VERIFIED
-            </span>
-          </div>
-          <div className="badge-sub">SOLUTIONS ENGINEER — DEV · AI/BI · SEC</div>
-          <Barcode />
-        </div>
+      <div className="brain-stage">
+        <img src={brain} alt="Rotating 3D brain with glowing neural signals" className="brain-img" width="640" height="360" />
       </div>
-    </div>
+      <figcaption className="showroom-caption">
+        <strong>{brainCaption.title}</strong>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -62,9 +35,9 @@ export function Hero() {
           </h1>
 
           <p className="hero-lead">
-            Seven years designing and shipping IT solutions — full‑stack platforms, embedded systems, applied AI, and BI
-            pipelines. Security isn't a separate service bolted on at the end; it's part of how the thing gets built in
-            the first place.
+            I'm human, with a real mind and a real heart. I don't take on work that could harm people — for that, go ask
+            the devils of this world. I build technology that serves: bridges, shields, electricity, transport,
+            aviation, and much more.
           </p>
 
           <div className="hero-actions">
@@ -87,7 +60,7 @@ export function Hero() {
         </div>
 
         <div className="hero-badge-wrap">
-          <Collage />
+          <Showroom />
         </div>
       </div>
     </section>

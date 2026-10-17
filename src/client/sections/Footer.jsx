@@ -7,9 +7,7 @@ export function Footer() {
         H<span className="dot">•</span>O
       </span>
       <p>{site.name} — Solutions Development &amp; Security Consulting</p>
-      <p className="footer-note">
-        Operating through {site.llcName} · {site.secondaryEmail}
-      </p>
+      {site.llcName && <p className="footer-note">Operating through {site.llcName}</p>}
     </footer>
   );
 }

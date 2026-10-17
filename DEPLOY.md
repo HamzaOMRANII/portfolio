@@ -9,7 +9,7 @@
     ecosystem.config.js        pm2 — dev (Vite dev server)
     ecosystem.prod.config.js   pm2 — production (src/server.js)
     deploy/                    deploy.sh + nginx site
-    .env.example               HOST / PORT for src/server.js (copy to .env)
+    .env.example               HOST / PORT for src/server.js, SITE_URL for the build (copy to .env)
 
 ## Local
     npm install
@@ -20,6 +20,7 @@
 ## Production on the VPS (Node 20.19+ or 22.12+, pm2, nginx)
     sudo apt install -y nginx && sudo npm i -g pm2
     git clone <your repo> portfolio && cd portfolio
+    cp .env.example .env                               # set SITE_URL=http://37.60.240.195:3010 (or your domain)
     npm ci && npm run build
     npm run pm2:start
     pm2 startup                                        # run the command it prints, once
@@ -27,6 +28,9 @@ Then nginx: paste the server block from `deploy/nginx.portfolio.conf` into the `
 `/etc/nginx/nginx.conf` (replacing the existing "Portfolio" block), and run
 `sudo nginx -t && sudo systemctl reload nginx`.
 The site is then live at http://37.60.240.195:3010.
+
+`SITE_URL` is read by `npm run build` to give the link-preview tags (`og:image` etc.) absolute URLs,
+so rebuild after changing it.
 
 Later updates: `bash deploy/deploy.sh` (needs a git checkout; otherwise run npm ci, npm run build, npm run pm2:reload).
 
