@@ -1,0 +1,85 @@
+Claude Code session: Portfolio (portfolio.omranisystems.com) hero redesign, UX review + quick wins
+====================================================================================================
+
+Session ID : 40e53fde-4ee8-4492-b13c-73f693083ca8
+Saved      : 2026-10-17 (last update: after the photo was erased from the Git history)
+Transcript : /root/.claude/projects/-projects-portfolio/40e53fde-4ee8-4492-b13c-73f693083ca8.jsonl
+
+HOW TO RELAUNCH THIS CHAT
+-------------------------
+  cd /projects/portfolio
+  claude --resume 40e53fde-4ee8-4492-b13c-73f693083ca8
+
+(Or run `claude --resume` in /projects/portfolio and pick this session from the list.)
+
+WHAT IS DONE (approved)
+-----------------------
+- Repo: github.com/HamzaOMRANII/portfolio (remote over SSH), branch main, everything pushed.
+- Stack: Vite + React. src/server.js serves dist/. PM2 app "portfolio" (runs `npm start`) on 127.0.0.1:3010.
+  nginx redirects http://37.60.240.195:3010 to https://portfolio.omranisystems.com.
+- Favicon: "HO" monogram (navy, cyan H, white O, gold dot): public/favicon.svg + favicon.png + apple-touch-icon.png.
+- Hero: full-screen 50/50 slide.
+    left  = smaller headline "Solutions, built. / Software. Embedded. AI/BI. / Secured by design."
+            + values paragraph ("I'm human, with a real mind and a real heart... bridges, shields,
+            electricity, transport, aviation, and much more.")
+    right = rotating brain GIF (user's Gemini render, src/client/assets/brain.gif) on a glowing
+            turntable ring, DEV/SEC chips, caption "HUMAN MINDS. REAL SOLUTIONS." only.
+  The portrait photo, code panel and ID badge were removed.
+- "Seven years designing and shipping IT solutions..." moved to The approach (Philosophy) section.
+- Quick wins from the UX review:
+    - one voice ("I") across the site
+    - Services title "I build it secure from day one." (no longer contradicts The approach)
+    - duplicate Kaspersky credential removed, stat now "3x Kaspersky certified"
+    - --ink-dim raised to #72889E (WCAG AA contrast)
+    - Open Graph / Twitter link-preview tags + public/og-image.png (1200x630)
+    - footer: "Operating through HAMZA OMRANI LLC"; secondary iCloud email no longer shown
+- Sectors cards: same size, aligned rows (no staggered offsets); natural height on phones.
+- Server serves .gif / .mp4 / .webm with the correct MIME types.
+- Portrait photo deleted from the repo AND erased from the Git history (filter-branch + force push).
+  GitHub may still serve the old orphaned commit by direct SHA link; the owner chose to leave that.
+
+PRODUCTION STATE (2026-10-17)
+-----------------------------
+- Production = GitHub main. Checks: 127.0.0.1:3010/healthz -> ok; https://portfolio.omranisystems.com -> 200.
+- .env on the server (not in git) has SITE_URL=https://portfolio.omranisystems.com, read by
+  `npm run build` for the og:image / canonical absolute URLs.
+
+HISTORY (commits on main, IDs after the history rewrite)
+--------------------------------------------------------
+  de8bb9c  Initial commit
+  ddc6907  version 1
+  c0462bb  hero redesign (brain showroom) + UX quick wins
+  553a361  GIF/video MIME types, live URL in DEPLOY.md
+  32b74f6  portrait photo removed, LLC name in footer
+  (next)   this session note
+Any other clone of the repo made before the rewrite must be deleted and re-cloned (do not pull).
+
+WHERE TO EDIT
+-------------
+  src/client/content.js         section texts, stats, services, work, sectors, credentials, brain caption
+  src/client/config.js          name, emails, LinkedIn, LLC name
+  src/client/sections/          Hero, Philosophy, Services, Process, Work, Scope, Credentials, Contact, Footer
+  src/client/styles.css         all styles (tokens at the top)
+  index.html                    title, description, link-preview tags
+  public/                       favicons, og-image.png
+
+DEPLOY
+------
+  cd /projects/portfolio && npm run build && pm2 restart portfolio --update-env
+  then: curl 127.0.0.1:3010/healthz and open https://portfolio.omranisystems.com
+  (deploy/deploy.sh also works but runs npm ci and reloads nginx for every site on the server.)
+
+OPEN POINTS (from the UX review, not started)
+---------------------------------------------
+Can be done without input:
+- Name + role line in the hero ("Hamza Omrani - Solutions Engineer").
+- Background code glyphs (encrypt(), TLS 1.3...) overlap text; keep them in the hero or hide on phones.
+- Services as 3 cards on desktop (accordion on phones); use a real <button> for accessibility.
+- Process as a horizontal stepper on desktop; active-section highlight in the nav.
+- On phones, show the hero text before the brain (or shrink the brain).
+- Convert the 2 MB brain GIF to a looping MP4/WebM (~300 KB); also respects reduced motion.
+Needs content from the owner:
+- Results/metrics, role, year and visuals for each Work project.
+- Contact form and/or booking link (Calendly / Cal.com), response time.
+- Testimonials or client quotes; credential verification links (Credly / IBM).
+- Optional French version of the site.
